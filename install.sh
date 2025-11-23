@@ -172,7 +172,7 @@ getLatestRelease() {
 installTorrServer() {
     echo " Устанавливаем и настраиваем TorrServer..."
     
-    if [ -f "$dirInstall/TorrServer-linux-arm64" ]; then
+    if [ -f "$dirInstall/TorrServer-linux-mipsle" ]; then
         read -p " TorrServer уже установлен. Хотите обновить? ($(colorize green Y)es/$(colorize yellow N)o) " answer_up </dev/tty
         if [ "$answer_up" != "${answer_up#[YyДд]}" ]; then
             UpdateVersion
@@ -180,7 +180,7 @@ installTorrServer() {
         fi
     fi
 
-    binName="TorrServer-linux-arm64"
+    binName="TorrServer-linux-mipsle"
     [ ! -d "$dirInstall" ] && mkdir -p "$dirInstall"
     
     urlBin="https://github.com/YouROK/TorrServer/releases/download/MatriX.136/TorrServer-linux-mipsle"
