@@ -183,7 +183,7 @@ installTorrServer() {
     binName="TorrServer-linux-arm64"
     [ ! -d "$dirInstall" ] && mkdir -p "$dirInstall"
     
-    urlBin="https://github.com/YouROK/TorrServer/releases/download/MatriX.136/TorrServer-linux-arm64"
+    urlBin="https://github.com/YouROK/TorrServer/releases/download/MatriX.136/TorrServer-linux-mipsle"
     
     echo " Загружаем TorrServer..."
     curl -L -o "$dirInstall/$binName" "$urlBin"
@@ -220,7 +220,7 @@ START=99
 STOP=10
 
 USE_PROCD=1
-PROG="$dirInstall/TorrServer-linux-arm64"
+PROG="$dirInstall/TorrServer-linux-mipsle"
 
 start_service() {
     procd_open_instance
@@ -234,7 +234,7 @@ start_service() {
 }
 
 stop_service() {
-    killall TorrServer-linux-arm64
+    killall TorrServer-linux-mipsle
 }
 
 reload_service() {
@@ -261,7 +261,7 @@ EOF
 }
 
 checkInstalled() {
-    if [ -f "$dirInstall/TorrServer-linux-arm64" ]; then
+    if [ -f "$dirInstall/TorrServer-linux-mipsle" ]; then
         echo " - TorrServer найден в директории $dirInstall"
         return 0
     else
@@ -272,8 +272,8 @@ checkInstalled() {
 
 UpdateVersion() {
     /etc/init.d/$serviceName stop
-    curl -L -o "$dirInstall/TorrServer-linux-arm64" "https://github.com/YouROK/TorrServer/releases/download/MatriX.136/TorrServer-linux-arm64"
-    chmod +x "$dirInstall/TorrServer-linux-arm64"
+    curl -L -o "$dirInstall/TorrServer-linux-mipsle" "https://github.com/YouROK/TorrServer/releases/download/MatriX.136/TorrServer-linux-mipsle"
+    chmod +x "$dirInstall/TorrServer-linux-mipsle"
     /etc/init.d/$serviceName start
     echo " - TorrServer обновлен!"
 }
